@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RomanizeService } from 'src/app/services/romanize.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RomanNumerals';
+
+  numeroRomano: String = '';
+
+  constructor(private romanizeService: RomanizeService) { }
+
+  convertir(numero){
+    this.numeroRomano = this.romanizeService.romanize(parseInt(numero, 10));
+  }
 }
